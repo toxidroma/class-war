@@ -66,8 +66,7 @@ do
   end
   self.Detonate = function(self)
     if self:IsValid() then
-      Boom(self:GetPos(), 256)
-      return self:Remove()
+      return Boom(self:GetPos(), 256) and self:Remove()
     end
   end
   self.PhysicsCollide = function(self, data)

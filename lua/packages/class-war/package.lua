@@ -1,7 +1,7 @@
 name = "class-war"
 main = "init.lua"
 cl_main = nil
-version = 0
+version = 000100
 client = true
 server = true
 menu = false

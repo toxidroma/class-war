@@ -2,7 +2,7 @@
 
 --NOTE: the name the SENT is registered is normally the name of the file/folder that defines it
     --if you wanted to use GMod's restrictive, awful mechanism for SENT definition built into it, you won't need this class at all
-    --unlike GMod's frustrating default SENT creation method, 
+        --unlike GMod's frustrating default SENT creation method, 
         --the ENTITY class can be extended from any code anywhere within a package that requires this package (class-war)
         --you can do this as many times as you want and organize it however you'd like (currently, only within the confines of a package; this might change)
     --AS A RESULT: there are no file/folder names that can be used to create the entity's internal name
@@ -37,7 +37,7 @@
                 --...but your class name is going to become the same as your class's @__entity value after being made lowercase
                     --you might as well not include the field @__entity
 
---NOTE: however you name your entity, it...
+--NOTE: however you name your entity, it
     --...will be made lowercase
     --...will be fixed with a 'lineage' of your descending ENTITY class's inheritance
         --the lineage begins just after ENTITY
@@ -89,10 +89,7 @@ class Bomb extends ENTITY
         surfprop = GetSurfaceData tr.SurfaceProps
         surfprop or= GetSurfaceData 0
         @EmitSound surfprop.impactSoftSound
-    @Detonate: =>
-        if @IsValid!
-            Boom @GetPos!, 256
-            @Remove!
+    @Detonate: => Boom(@GetPos!, 256) and @Remove! if @IsValid!
     @PhysicsCollide: (data) => @EmitSound 'SolidMetal.ImpactHard' if data.Speed > 64
 
 import Trim from string
