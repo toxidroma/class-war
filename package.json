@@ -1,0 +1,7 @@
+{
+    "name": "class-war",
+    "files": {
+        "lua/packages/class-war/package.lua": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/package.lua",
+        "lua/packages/class-war/init.lua": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/init.lua"
+    }
+}
