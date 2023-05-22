@@ -2,7 +2,7 @@ export *
 name    = "class-war"
 main    = "init.lua" --the file that is first loaded
 cl_main = nil --if cl_main is set to a file, that is the first file the client loads instead of main
-version = 000100
+version = 000200
 
 --allowed sides to run package, if client is false then the server will not send anything
 client  = true
@@ -19,7 +19,10 @@ isolation = true
 send = {
     "entity.lua"
     "uplink.lua"
+    "weapon.lua"
     "examples.lua"
+    "examples/entity.lua"
+    "examples/weapon.lua"
 }
 
 --if false, the logger will not be created by default

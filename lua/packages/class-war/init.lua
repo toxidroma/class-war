@@ -6,6 +6,7 @@ local AddChangeCallback
 AddChangeCallback = cvars.AddChangeCallback
 ENTITY = include('entity.lua')
 UPLINK = include('uplink.lua')
+WEAPON = include('weapon.lua')
 do
   local _with_0 = CreateConVar('class-war_examples', 1, {
     FCVAR_REPLICATED,
@@ -19,5 +20,6 @@ do
 end
 return {
   ENTITY = ENTITY,
-  UPLINK = UPLINK
+  UPLINK = UPLINK,
+  WEAPON = WEAPON
 }

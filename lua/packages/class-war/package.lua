@@ -10,7 +10,10 @@ isolation = true
 send = {
   "entity.lua",
   "uplink.lua",
-  "examples.lua"
+  "weapon.lua",
+  "examples.lua",
+  "examples/entity.lua",
+  "examples/weapon.lua"
 }
 logger = true
 gamemodes = nil
