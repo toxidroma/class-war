@@ -2,9 +2,10 @@ require('glua-extensions', 'https://github.com/Pika-Software/glua-extensions')
 require('nw3-vars', 'https://github.com/Pika-Software/nw3-vars')
 local logger = _PKG:GetLogger()
 local gm = gmod.GetGamemode()
-local AddChangeCallback
-AddChangeCallback = cvars.AddChangeCallback
+BIND = include('bind.lua')
 ENTITY = include('entity.lua')
+PLYCLASS = include('plyclass.lua')
+SOUND = include('sound.lua')
 UPLINK = include('uplink.lua')
 WEAPON = include('weapon.lua')
 do
@@ -19,7 +20,10 @@ do
   end
 end
 return {
+  BIND = BIND,
   ENTITY = ENTITY,
+  PLYCLASS = PLYCLASS,
+  SOUND = SOUND,
   UPLINK = UPLINK,
   WEAPON = WEAPON
 }

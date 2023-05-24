@@ -1,9 +1,11 @@
 local Punch
-do
-  local _base_0 = require('vpunch-local', 'https://github.com/toxidroma/vpunch-local')
-  local _fn_0 = _base_0.Punch
-  Punch = function(...)
-    return _fn_0(_base_0, ...)
+if CLIENT then
+  do
+    local _base_0 = require('vpunch-local', 'https://github.com/toxidroma/vpunch-local')
+    local _fn_0 = _base_0.Punch
+    Punch = function(...)
+      return _fn_0(_base_0, ...)
+    end
   end
 end
 local Gun
@@ -116,7 +118,7 @@ do
   self.PrimaryAttack = function(self)
     if _class_0.__parent.PrimaryAttack(self) then
       if CLIENT then
-        return Punch(Angle(random(-1, -3), random(-2, 2), random(-1, 1)))
+        return Punch(Angle(random(-1, -30), random(-2, 2), random(-1, 1)))
       end
     end
   end
