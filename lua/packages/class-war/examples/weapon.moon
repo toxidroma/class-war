@@ -1,4 +1,5 @@
-import \Punch from require 'vpunch-local', 'https://github.com/toxidroma/vpunch-local'
+local Punch
+import \Punch from require 'vpunch-local', 'https://github.com/toxidroma/vpunch-local' if CLIENT
 class Gun extends WEAPON
     @Category: 'class-war.examples'
     @Spawnable: true
@@ -25,7 +26,7 @@ class Pistol extends Gun
     @ViewModel: Model 'models/weapons/c_pistol.mdl'
     @PrimaryAttack: =>
         if super!
-            Punch Angle random(-1,-3), random(-2,2), random(-1,1) if CLIENT
+            Punch Angle random(-1,-30), random(-2,2), random(-1,1) if CLIENT
     @Primary:
         Ammo:           'Pistol'
         ClipSize:       18
