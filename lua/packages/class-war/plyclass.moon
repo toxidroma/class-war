@@ -101,9 +101,7 @@ class PLAYER
     ShouldDrawLocal: =>
 
     --SHARED
-    StartMove: (mv, cmd) =>
-        mv\SetButtons band mv\GetButtons!, bnot(IN_JUMP + IN_DUCK)
-        return
+    StartMove: (mv, cmd) => 
     Move: (mv) => @Player\GetStateTable!\Move @Player, mv if @Player.GetState
     FinishMove: (mv) =>
 
