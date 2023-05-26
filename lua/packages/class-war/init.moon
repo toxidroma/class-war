@@ -3,6 +3,7 @@ require 'nw3-vars', 'https://github.com/Pika-Software/nw3-vars'
 logger  = _PKG\GetLogger!
 gm = gmod.GetGamemode!
 export BIND     = include'bind.lua'
+export CIRCLE   = include'circle.lua'
 export ENTITY   = include'entity.lua'
 export PLYCLASS = include'plyclass.lua'
 export SOUND    = include'sound.lua'
@@ -16,6 +17,7 @@ with CreateConVar 'class-war_examples', 1, {FCVAR_REPLICATED, FCVAR_ARCHIVE}, "C
 
 {
     :BIND
+    :CIRCLE
     :ENTITY
     :PLYCLASS
     :SOUND
