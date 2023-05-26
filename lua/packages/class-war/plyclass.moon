@@ -6,7 +6,10 @@ import lower, Left from string
 import PrecacheModel from util
 
 with FindMetaTable 'Player'
-    .RunClass = (fn, ...) => RunClass @, fn, ... if @ClassTable![fn]
+    .RunClass = (fn, ...) => 
+        cls = @ClassTable!
+        if cls and cls[fn]
+            RunClass @, fn, ...
     .ClassName = => GetPlayerClass @
     .ClassTable = => GetPlayerClasses![@ClassName!]
 
@@ -19,6 +22,7 @@ if CLIENT
     hook.Add 'HUDPaint', id, -> LocalPlayer!\RunClass 'HUDPaint'
     hook.Add 'HUDDrawTargetID', id, -> LocalPlayer!\RunClass 'HUDDrawTargetID'
     hook.Add 'PostDrawOpaqueRenderables', id, -> LocalPlayer!\RunClass 'PostDrawOpaqueRenderables'
+    hook.Add 'InputMouseApply', id, (...) -> LocalPlayer!\RunClass 'InputMouseApply', ...
 else
     hook.Add 'PostPlayerDeath', id, (ply) -> ply\RunClass 'PostPlayerDeath'
     hook.Add 'SetupPlayerVisibility', id, (ply, viewEntity) ->
