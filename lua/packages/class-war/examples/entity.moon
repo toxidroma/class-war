@@ -63,7 +63,7 @@
                 --grenade/incendiary/impact will first inherit from grenade/incendiary
                 --grenade/incendiary inherits from grenade, so grenade/incendiary/impact will inherit from grenade after inheriting from grenade/incendiary
 
-{ Explosion: Boom, :GetSurfaceData, :TraceLine } = util
+import GetSurfaceData, TraceLine from util
 
 --FINALLY, some working examples:
     --bomb
@@ -89,7 +89,18 @@ class Bomb extends ENTITY
         surfprop = GetSurfaceData tr.SurfaceProps
         surfprop or= GetSurfaceData 0
         @EmitSound surfprop.impactSoftSound
-    @Detonate: => Boom(@GetPos!, 256) and @Remove! if @IsValid!
+    @Detonate: => 
+        pos = @WorldSpaceCenter!
+        util.ScreenShake pos, 25, 150, 1, @Radius
+        with ents.Create 'env_explosion'
+            \SetOwner @GetOwner!
+            \SetPos pos
+            \SetKeyValue 'iMagnitude', @Damage
+            \SetKeyValue 'iRadiusOverride', @Radius
+            \Spawn!
+            \Activate!
+            \Fire 'Explode'
+        @Remove!
     @PhysicsCollide: (data) => @EmitSound 'SolidMetal.ImpactHard' if data.Speed > 64
 
 import Trim from string
