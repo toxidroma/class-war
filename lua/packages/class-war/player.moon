@@ -28,7 +28,8 @@ else
     hook.Add 'SetupPlayerVisibility', id, (ply, viewEntity) ->
         AddOriginToPVS viewEntity\WorldSpaceCenter! if IsValid viewEntity
         ply\RunClass 'SetupPlayerVisibility', viewEntity
-class PLAYER
+
+class
     @__barcode: 'player'
     @__inherited: (child) =>
         fields = {k,v for k,v in pairs(child.__base) when Left(k, 2) != "__"}
@@ -37,7 +38,7 @@ class PLAYER
     
     new: (@ply) => SetPlayerClass @ply, @@__barcode
 
-    DisplayName:        'Default Class'
+    DisplayName:        'Default Player Class'
     SlowWalkSpeed:      150
     WalkSpeed:          250
     RunSpeed:           350
@@ -118,5 +119,3 @@ class PLAYER
     PreDrawViewModel: (vm, weapon) =>
     PostDrawViewModel: (vm, weapon) =>
     GetHandsModel: => TranslatePlayerHands TranslateToPlayerModelName @Player
-RegisterClass 'player', PLAYER.__base, nil
-PLAYER
