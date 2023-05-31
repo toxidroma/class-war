@@ -29,12 +29,11 @@ else
         AddOriginToPVS viewEntity\WorldSpaceCenter! if IsValid viewEntity
         ply\RunClass 'SetupPlayerVisibility', viewEntity
 
-class
-    @__barcode: 'player'
+class PLAYER
     @__inherited: (child) =>
         fields = {k,v for k,v in pairs(child.__base) when Left(k, 2) != "__"}
         child.__barcode = "#{@__barcode and @__barcode .. '/' or ''}#{lower(child.__name)}"
-        RegisterClass child.__barcode, fields, @__barcode
+        RegisterClass child.__barcode, fields, @__barcode and @__barcode or nil
     
     new: (@ply) => SetPlayerClass @ply, @@__barcode
 
@@ -119,3 +118,5 @@ class
     PreDrawViewModel: (vm, weapon) =>
     PostDrawViewModel: (vm, weapon) =>
     GetHandsModel: => TranslatePlayerHands TranslateToPlayerModelName @Player
+RegisterClass 'player', PLAYER, nil
+PLAYER
