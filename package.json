@@ -1,10 +1,17 @@
 {
     "name": "class-war",
     "files": {
-        "lua/packages/class-war/package.lua": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/package.lua",
-        "lua/packages/class-war/init.lua": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/init.lua",
-        "lua/packages/class-war/entity.lua": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/entity.lua",
-        "lua/packages/class-war/uplink.lua": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/uplink.lua",
-        "lua/packages/class-war/examples.lua": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/examples.lua",
+        "lua/packages/class-war/package.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/package.moon",
+        "lua/packages/class-war/init.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/init.moon",
+        "lua/packages/class-war/bind.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/bind.moon",
+        "lua/packages/class-war/circle.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/circle.moon",
+        "lua/packages/class-war/entity.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/entity.moon",
+        "lua/packages/class-war/examples.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/examples.moon",
+        "lua/packages/class-war/player.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/player.moon",
+        "lua/packages/class-war/sound.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/sound.moon",
+        "lua/packages/class-war/uplink.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/uplink.moon",
+        "lua/packages/class-war/weapon.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/weapon.moon",
+        "lua/packages/class-war/examples/entity.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/examples/entity.moon",
+        "lua/packages/class-war/examples/weapon.moon": "https://raw.githubusercontent.com/toxidroma/class-war/main/lua/packages/class-war/examples/weapon.moon",
     }
 }
