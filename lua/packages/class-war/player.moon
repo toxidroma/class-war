@@ -30,6 +30,7 @@ else
         ply\RunClass 'SetupPlayerVisibility', viewEntity
 
 class PLAYER
+    @__barcode: 'player'
     @__inherited: (child) =>
         fields = {k,v for k,v in pairs(child.__base) when Left(k, 2) != "__"}
         child.__barcode = "#{@__barcode and @__barcode .. '/' or ''}#{lower(child.__name)}"
@@ -118,5 +119,6 @@ class PLAYER
     PreDrawViewModel: (vm, weapon) =>
     PostDrawViewModel: (vm, weapon) =>
     GetHandsModel: => TranslatePlayerHands TranslateToPlayerModelName @Player
-RegisterClass 'player', PLAYER, nil
+unless GetPlayerClasses!.player
+   RegisterClass 'player', PLAYER, nil 
 PLAYER
