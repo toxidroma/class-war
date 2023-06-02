@@ -98,12 +98,15 @@ class PLAYER
     GetHandPosition: => @Player\GetPos!, @Player\GetAngles!
 
     --CLIENT
-    CalcView: (view) => view.origin, view.angles = @GetViewOrigin!
+    CalcView: (view) => 
+        if @Player\GetObserverMode! != OBS_MODE_NONE
+            return view
+        view.origin, view.angles = @GetViewOrigin!
     HUDPaint: =>
     HUDDrawTargetID: =>
     PostDrawOpaqueRenderables: =>
     CreateMove: (cmd) =>
-    ShouldDrawLocal: =>
+    ShouldDrawLocal: => true if @Player\GetObserverMode! != OBS_MODE_NONE
 
     --SHARED
     StartMove: (mv, cmd) => 
