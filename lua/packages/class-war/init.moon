@@ -2,7 +2,7 @@
 install 'nw3-vars', 'https://github.com/Pika-Software/nw3-vars'
 logger  = _PKG\GetLogger!
 gm = gmod.GetGamemode!
-print utils.GetCurrentFile!
+print gpm.utils.GetCurrentFile!
 export BIND     = include'bind.lua'
 export CIRCLE   = include'circle.lua'
 export ENTITY   = include'entity.lua'
