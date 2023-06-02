@@ -1,4 +1,3 @@
-AddCSLuaFile!
 return unless CLIENT
 export CIRCLE_FILLED, CIRCLE_OUTLINED, CIRCLE_BLURRED = 0, 1, 2
 import NoTexture from draw
