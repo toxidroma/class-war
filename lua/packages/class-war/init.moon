@@ -1,4 +1,4 @@
---install 'glua-extensions', 'https://github.com/Pika-Software/glua-extensions'
+install 'glua-extensions', 'https://github.com/Pika-Software/glua-extensions'
 install 'nw3-vars', 'https://github.com/Pika-Software/nw3-vars'
 logger  = _PKG\GetLogger!
 gm = gmod.GetGamemode!
