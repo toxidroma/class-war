@@ -68,18 +68,22 @@ import GetSurfaceData, TraceLine from util
 --FINALLY, some working examples:
     --bomb
 class Bomb extends ENTITY
-    @Base: 'base_gmodentity'
-    @Model: Model 'models/props_junk/PopCan01a.mdl'
-    @Category: 'class-war.examples'
-    @Spawnable: true
-    @Initialize: =>
+    Base: 'base_gmodentity'
+    Model: Model 'models/props_junk/PopCan01a.mdl'
+    Category: 'class-war.examples'
+    Spawnable: true
+
+    Damage: 175
+    Radius: 250
+
+    Initialize: =>
         @SetModel @Model
         if SERVER
             @PhysicsInit SOLID_VPHYSICS
             @SetMoveType MOVETYPE_VPHYSICS
             @SetUseType SIMPLE_USE
         @PhysWake!
-    @Use: (ply) => 
+    Use: (ply) => 
         return if @IsPlayerHolding!
         ply\PickupObject @
         pos = @GetPos!
@@ -89,7 +93,7 @@ class Bomb extends ENTITY
         surfprop = GetSurfaceData tr.SurfaceProps
         surfprop or= GetSurfaceData 0
         @EmitSound surfprop.impactSoftSound
-    @Detonate: => 
+    Detonate: => 
         pos = @WorldSpaceCenter!
         util.ScreenShake pos, 25, 150, 1, @Radius
         with ents.Create 'env_explosion'
@@ -101,16 +105,16 @@ class Bomb extends ENTITY
             \Activate!
             \Fire 'Explode'
         @Remove!
-    @PhysicsCollide: (data) => @EmitSound 'SolidMetal.ImpactHard' if data.Speed > 64
+    PhysicsCollide: (data) => @EmitSound 'SolidMetal.ImpactHard' if data.Speed > 64
 
 import Trim from string
 --the below creates a SENT which is almost an exact copy of bomb, except it has a new model and it will explode if it smacks against something hard enough
     --bomb/unstable
 class Unstable extends Bomb
-    @Model: Model 'models/Items/combine_rifle_ammo01.mdl'
-    @ImpactThreshold: 256
-    @GetOverlayText: => "explodes on impact at speed > #{@ImpactThreshold}"
-    @PhysicsCollide: (data) =>
+    Model: Model 'models/Items/combine_rifle_ammo01.mdl'
+    ImpactThreshold: 256
+    GetOverlayText: => "explodes on impact at speed > #{@ImpactThreshold}"
+    PhysicsCollide: (data) =>
         super data  --what does this do?
                 --it runs the PhysicsCollide function from its parent while passing itself as the first argument (@, or 'self')
             --the PhysicsCollide function on the parent Bomb emits the sound SolidMetal.ImpactHard if it collides at speed > 32
@@ -120,4 +124,4 @@ class Unstable extends Bomb
 --same inheritance principles
     --bomb/unstable/sensitive
 class Sensitive extends Unstable
-   @ImpactThreshold: 128
+    ImpactThreshold: 128
