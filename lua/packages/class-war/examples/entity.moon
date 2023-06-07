@@ -131,7 +131,7 @@ class Landmine extends Bomb
     Model: Model 'models/props_junk/cardboard_box004a.mdl'
     GetOverlayText: => 'explodes when touched by a player'
     StartTouch: (ent) => 
-        @Detonate! if ent\IsPlayer() 
+        @Detonate! if ent\IsPlayer! 
 
 -- below is an entity that burns after being shot and then explodes, or explodes after @MaxHits shots
 class Canister extends Bomb
