@@ -134,3 +134,17 @@ class Landmine extends Bomb
         @Detonate! if ent\IsPlayer() 
 
 -- below is an entity that burns after being shot and then explodes, or explodes after @MaxHits shots
+class Canister extends Bomb
+    Model: Model 'models/props_junk/PropaneCanister001a.mdl'
+    Hits: 0
+    MaxHits: 3
+    BurnTime: 4
+    GetOverlayText: => "explodes after:\nfirst shot at #{@BurnTime}s\nor after #{@MaxHits} shots"
+    OnTakeDamage: (dmg) =>
+        if not dmg\IsBulletDamage! return
+        @Hits += 1
+        if @Hits == 1
+            @Ignite @BurnTime
+            timer.Simple @BurnTime, -> 
+                @Detonate! if @IsValid! 
+        elseif @Hits >= @MaxHits @Detonate!
