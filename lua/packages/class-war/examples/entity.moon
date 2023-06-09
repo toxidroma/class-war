@@ -125,3 +125,56 @@ class Unstable extends Bomb
     --bomb/unstable/sensitive
 class Sensitive extends Unstable
     ImpactThreshold: 128
+
+--below bomb explodes the moment it touches a player
+class Landmine extends Bomb
+    Model: Model 'models/props_junk/cardboard_box004a.mdl'
+    GetOverlayText: => 'explodes when touched by a player'
+    StartTouch: (ent) => 
+        @Detonate! if ent\IsPlayer! 
+
+-- below is an entity that burns after being shot and then explodes, or explodes after @MaxHits shots
+class Canister extends Bomb
+    Damage: 125
+    Model: Model 'models/props_c17/canister01a.mdl'
+    Hits: 0
+    MaxHits: 3
+    BurnTime: 4
+    GetOverlayText: => "explodes after:\nfirst shot at #{@BurnTime}s\nor after #{@MaxHits} shots"
+    OnTakeDamage: (dmg) =>
+        if not dmg\IsBulletDamage! return
+        @Hits += 1
+        if @Hits == 1
+            @Ignite @BurnTime
+            timer.Simple @BurnTime, -> 
+                @Detonate! if @IsValid! 
+        elseif @Hits >= @MaxHits 
+            @Detonate!
+
+import random from math
+
+incendiaryGibs = {
+    Model 'models/props_c17/canisterchunk02a.mdl'
+    Model 'models/props_c17/canisterchunk02d.mdl'
+    Model 'models/props_c17/canisterchunk02h.mdl'
+    Model 'models/props_c17/canisterchunk02m.mdl'
+    Model 'models/props_c17/canisterchunk02b.mdl'
+}
+
+class Incendiary extends Canister
+    Damage: 25
+    Model: Model 'models/props_c17/canister02a.mdl'
+    Detonate: =>
+        owner, pos = @GetOwner!, @WorldSpaceCenter!
+        super!
+        for i = 1, random(5, 6)
+            with ents.Create 'prop_physics'
+                \SetOwner owner
+                \SetPos pos + Vector(0,0,64)
+                \SetAngles Angle( random( 0, 360 ), random( 0, 360 ), random( 0, 360 ) )
+                \SetModel table.Random incendiaryGibs
+                \Spawn!
+                \Activate!
+                \Ignite random(8, 10), 100
+                timer.Simple random(11, 22), -> 
+                    \Remove! if \IsValid! 
