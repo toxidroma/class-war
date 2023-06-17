@@ -48,6 +48,8 @@ class
         else
             PrecacheSound snd.sound
         sound.Add snd
+    new: (where) =>
+        
     channel: CHAN_AUTO
     level: SNDLVL_NORM
     volume: 1

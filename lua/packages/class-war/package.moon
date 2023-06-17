@@ -26,6 +26,10 @@ send = {
     "uplink.lua"
     "weapon.lua"
     "vgui.lua"
+    "examples/entity.lua"
+    "examples/font.lua"
+    "examples/vgui.lua"
+    "examples/weapon.lua"
 }
 
 --if false, the logger will not be created by default
