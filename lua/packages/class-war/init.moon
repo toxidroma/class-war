@@ -1,4 +1,4 @@
-install 'gmoon-extensions', 'https://github.com/Pika-Software/gmoon-extensions'
+install 'glua-extensions', 'https://github.com/Pika-Software/glua-extensions'
 install 'nw3-vars', 'https://github.com/Pika-Software/nw3-vars'
 logger  = _PKG\GetLogger!
 gm = gmod.GetGamemode!
@@ -24,8 +24,10 @@ with CreateConVar 'class-war_examples', 1, {FCVAR_REPLICATED, FCVAR_ARCHIVE}, "C
     :BIND
     :CIRCLE
     :ENTITY
+    :FONT
     :PLAYER
     :SOUND
     :UPLINK
     :WEAPON
+    :VGUI
 }

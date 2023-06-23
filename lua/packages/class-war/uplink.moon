@@ -1,4 +1,3 @@
-AddCSLuaFile!
 import SendToServer, SendOmit, SendPAS, SendPVS,
     Broadcast, Send, Start, Receive from net
 import AddNetworkString from util
