@@ -1,8 +1,8 @@
-include'examples/entity.moon'
-include'examples/weapon.moon'
+include'examples/entity.lua'
+include'examples/weapon.lua'
 if CLIENT
-    include'examples/font.moon'
-    include'examples/vgui.moon'
+    include'examples/font.lua'
+    include'examples/vgui.lua'
 else
-    AddCSLuaFile'examples/font.moon'
-    AddCSLuaFile'examples/vgui.moon'
+    AddCSLuaFile'examples/font.lua'
+    AddCSLuaFile'examples/vgui.lua'

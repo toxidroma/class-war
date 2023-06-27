@@ -3,22 +3,23 @@ install 'nw3-vars', 'https://github.com/Pika-Software/nw3-vars'
 logger  = _PKG\GetLogger!
 gm = gmod.GetGamemode!
 
-export BIND     = include'bind.moon'
-export CIRCLE   = include'circle.moon'
-export ENTITY   = include'entity.moon'
-export FONT     = include'font.moon'
-export PLAYER   = include'player.moon' 
-export SOUND    = include'sound.moon'
-export UPLINK   = include'uplink.moon'
-export WEAPON   = include'weapon.moon'
-export VGUI     = include'vgui.moon'
+export BIND     = include'bind.lua'
+export CIRCLE   = include'circle.lua'
+export ENTITY   = include'entity.lua'
+export FONT     = include'font.lua'
+export PLAYER   = include'player.lua' 
+export SOUND    = include'sound.lua'
+export UPLINK   = include'uplink.lua'
+export SYNCLASS = include'synclass.lua'
+export WEAPON   = include'weapon.lua'
+export VGUI     = include'vgui.lua'
 --TODO: CONVAR class
 with CreateConVar 'class-war_examples', 1, {FCVAR_REPLICATED, FCVAR_ARCHIVE}, "Change whether the examples are loaded. You'll need to restart the server for changes to take effect."
     logger\Info "+CVAR/class-war_example: '#{\GetString!}'"..(\GetInt! == tonumber(\GetDefault!) and '' or "( def. '#{\GetDefault!}' )")
     logger\Info " #{\GetHelpText!}"
     if \GetBool!
-        AddCSmoonFile'examples.moon'
-        include'examples.moon' 
+        AddCSLuaFile'examples.lua'
+        include'examples.lua' 
 
 {
     :BIND
@@ -27,6 +28,7 @@ with CreateConVar 'class-war_examples', 1, {FCVAR_REPLICATED, FCVAR_ARCHIVE}, "C
     :FONT
     :PLAYER
     :SOUND
+    :SYNCLASS
     :UPLINK
     :WEAPON
     :VGUI

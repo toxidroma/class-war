@@ -1,23 +1,23 @@
 export *
 name    = 'class-war'
 init    =
-    client: 'init.moon'
-    server: 'init.moon'
+    client: 'init.lua'
+    server: 'init.lua'
 version = 020000
 autorun = true
 send = {
-    'bind.moon'
-    'circle.moon'
-    'entity.moon'
-    'font.moon'
-    'player.moon'
-    'sound.moon'
-    'uplink.moon'
-    'weapon.moon'
-    'vgui.moon'
-    'examples/entity.moon'
-    'examples/font.moon'
-    'examples/vgui.moon'
-    'examples/weapon.moon'
+    'bind.lua'
+    'circle.lua'
+    'entity.lua'
+    'font.lua'
+    'player.lua'
+    'sound.lua'
+    'uplink.lua'
+    'weapon.lua'
+    'vgui.lua'
+    'examples/entity.lua'
+    'examples/font.lua'
+    'examples/vgui.lua'
+    'examples/weapon.lua'
 }
 logger = true
